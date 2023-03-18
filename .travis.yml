@@ -1,0 +1,17 @@
+sudo: required
+services:
+   - docker
+#testing phase
+before_install: 
+   - docker build -t martin/react-test -f ./client/Dockerfile.dev ./client #path of the dockerfile its on the client folder
+
+script:
+   - docker run -e CI=true martin/react-test npm test -- --coverage --watchAll=false
+
+#build for the production
+after_success: 
+   - docker build -t martin/multi-client ./client #we dont have to specify the file, will use default file, Dockerfile
+   #do the same for the other folders
+   - docker build -t martin/multi-nginx ./nginx
+   - docker build -t martin/multi-server ./server
+   - docker build -t martin/multi-worker ./worker
