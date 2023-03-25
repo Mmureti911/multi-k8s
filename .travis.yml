@@ -3,10 +3,10 @@ services:
    - docker
 #testing phase
 before_install: 
-   - docker build -t ScottMureti/react-test -f ./client/Dockerfile.dev ./client #path of the dockerfile its on the client folder
+   - docker build -t mmmmmscott/react-test -f ./client/Dockerfile.dev ./client #path of the dockerfile its on the client folder
 
 script:
-   - docker run -e CI=true ScottMureti/react-test npm test -- --coverage --watchAll=false
+   - docker run -e CI=true mmmmmscott/react-test npm test -- --coverage --watchAll=false
 
 #build for the production
 after_success: 
@@ -18,8 +18,9 @@ after_success:
  #Log in to the docker CLI
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-   - docker push ScottMureti/multi-client
-   - docker push ScottMureti/multi-nginx
-   - docker push ScottMureti/multi-server
-   - docker push ScottMureti/multi-worker
+   - docker push mmmmmscott/multi-client
+   - docker push mmmmmscott/multi-nginx
+   - docker push mmmmmscott/multi-server
+   - docker push mmmmmscott/multi-worker
 
+  
