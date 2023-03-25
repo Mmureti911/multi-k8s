@@ -10,11 +10,11 @@ script:
 
 #build for the production
 after_success: 
-   - docker build -t martin/multi-client ./client #we dont have to specify the file, will use default file, Dockerfile
+   - docker build -t mmmmmscott/multi-client ./client #we dont have to specify the file, will use default file, Dockerfile
    #do the same for the other folders
-   - docker build -t ScottMureti/multi-nginx ./nginx
-   - docker build -t ScottMureti/multi-server ./server
-   - docker build -t ScottMureti/multi-worker ./worker
+   - docker build -t mmmmmscott/multi-nginx ./nginx
+   - docker build -t mmmmmscott/multi-server ./server
+   - docker build -t mmmmmscott/multi-worker ./worker
  #Log in to the docker CLI
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
