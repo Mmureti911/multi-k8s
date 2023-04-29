@@ -3,25 +3,25 @@ services:
    - docker
 #testing phase
 before_install: 
-   - docker build -t mmmmmscott/react-test -f ./client/Dockerfile.dev ./client #path of the dockerfile its on the client folder
+   - docker build -t winscot/react-test -f ./client/Dockerfile.dev ./client #path of the dockerfile its on the client folder
 
 script:
    
-    - docker run -e CI=true mmmmmscott/react-test npm test
+    - docker run -e CI=true winscot/react-test npm test
 
 #build for the production
 after_success: 
-   - docker build -t mmmmmscott/multi-client ./client #we dont have to specify the file, will use default file, Dockerfile
+   - docker build -t winscot/multi-client ./client #we dont have to specify the file, will use default file, Dockerfile
    #do the same for the other folders
-   - docker build -t mmmmmscott/multi-nginx ./nginx
-   - docker build -t mmmmmscott/multi-server ./server
-   - docker build -t mmmmmscott/multi-worker ./worker
+   - docker build -t winscot/multi-nginx ./nginx
+   - docker build -t winscot/multi-server ./server
+   - docker build -t winscot/multi-worker ./worker
  #Log in to the docker CLI
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-   - docker push mmmmmscott/multi-client
-   - docker push mmmmmscott/multi-nginx
-   - docker push mmmmmscott/multi-server
-   - docker push mmmmmscott/multi-worker
+   - docker push winscot/multi-client
+   - docker push winscotmulti-nginx
+   - docker push winscot/multi-server
+   - docker push winscot/multi-worker
 
   
