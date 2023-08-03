@@ -1,4 +1,4 @@
-docker build -t muretimartin/multi-client:latest -t muretimartin/multiclient:$SHA -f ./client/Dockerfile ./client
+docker build -t muretimartin/multi-client:latest -t muretimartin/multi-client:$SHA -f ./client/Dockerfile ./client
 docker build -t muretimartin/multi-server:latest -t muretimartin/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t muretimartin/multi-worker:latest -t muretimartin/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
