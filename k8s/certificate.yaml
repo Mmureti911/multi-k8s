@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+ 
+kind: Certificate
+metadata:
+  name: k8s-multicluster.spycenation.co.ke-tls
+spec:
+  secretName: k8s-multicluster.spycenation.co.ke
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: k8s-multicluster.spycenation.co.ke
+  dnsNames:
+    - k8s-multicluster.spycenation.co.ke
+    - www.k8s-multicluster.spycenation.co.ke
